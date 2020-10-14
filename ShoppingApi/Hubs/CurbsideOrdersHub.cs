@@ -26,6 +26,16 @@ namespace ShoppingApi.Hubs
             _channel = channel;
         }
 
+        public override Task OnConnectedAsync()
+        {
+
+            return base.OnConnectedAsync();
+        }
+        public override Task OnDisconnectedAsync(Exception exception)
+        {
+            return base.OnDisconnectedAsync(exception);
+        }
+
         public async Task PlaceOrder(PostCurbsideOrderRequest orderToBePlaced)
         {
             CurbsideOrder order = await _commands.AddOrderWs(orderToBePlaced, Context.ConnectionId);
